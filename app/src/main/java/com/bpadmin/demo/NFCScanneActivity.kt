@@ -68,7 +68,8 @@ open class NFCScanneActivity : CloverCFPActivity() {
         )
         handlerNfc = Handler()
         delayRunnable= Runnable {
-            mAdapter!!.enableForegroundDispatch(this, mPendingIntent, null, null)
+
+
             enableReaderNFC()
         }
     }
@@ -106,6 +107,8 @@ open class NFCScanneActivity : CloverCFPActivity() {
                 )
 
                 Log.i(TAG, "enable called")
+            }else{
+                mAdapter!!.enableForegroundDispatch(this, mPendingIntent, null, null)
             }
         }
         }
@@ -122,10 +125,13 @@ open class NFCScanneActivity : CloverCFPActivity() {
                 showToast("NFC not enabled,please reboot the device")
                // restartApp()
                 //  setResultAndFinish(RESULT_CANCELED, "NFC not enabled");
+            }else{
+                enableReaderNFC()
             }
 
+
          //   enableReaderNFC()
-startDelayingfc()
+//startDelayingfc()
         }
 
     }
